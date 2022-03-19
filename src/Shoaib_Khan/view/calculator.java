@@ -25,6 +25,7 @@ public class calculator implements ActionListener {
     private JButton button16;
     private JButton buttonPlus;
     private JTextArea textArea1;
+    private JButton ACButton;
     public double sum=0, cnt=0;
     private String num = "";
     String action, operator="P";
@@ -34,8 +35,12 @@ public class calculator implements ActionListener {
     }
     public void run(){
         JFrame frame = new JFrame("Calculator");
+        frame.setSize(1000,1000);
+        panel1.setSize(1000,1000);
         frame.setContentPane(new calculator().panel1);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
     new calculator();
 
@@ -79,13 +84,15 @@ public class calculator implements ActionListener {
         button16.setActionCommand(".");
         a00Button.addActionListener(this);
         a00Button.setActionCommand("00");
+        ACButton.addActionListener(this);
+        ACButton.setActionCommand("AC");
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         action = e.getActionCommand();
-        if(!action.equals("P") &&!action.equals("M") && !action.equals("Mu") && !action.equals("D") && !action.equals("Ans") ) {
+        if(!action.equals("P") &&!action.equals("M") && !action.equals("Mu") && !action.equals("D") && !action.equals("Ans") && !action.equals("AC") ) {
             num += action;
             textArea1.setText(num);
         }
@@ -94,6 +101,10 @@ public class calculator implements ActionListener {
             else if(operator.equals("M")&& !num.equals(""))sum -= Double.valueOf(num);
             else if(operator.equals("Mu")&& !num.equals(""))sum *= Double.valueOf(num);
             else if(operator.equals("D")&& !num.equals(""))sum /= Double.valueOf(num);
+            if(action.equals("AC")){
+                sum = 0.0;
+
+            }
 
             num = "";
             if(sum == (double) Integer.valueOf((int) sum)) textArea1.setText(String.valueOf((int)sum));
