@@ -1,6 +1,6 @@
-package com.company.control;
-import com.company.view.calculator;
-import java.util.Scanner;
+package Shoaib_Khan.control;
+import Shoaib_Khan.view.calculator;
+
 public class controller {
     public static void main(String[] args){
 
